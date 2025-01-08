@@ -8,11 +8,12 @@
 5. [⚖️ Legal Considerations](#legal-considerations)  
 6. [🛡️ Protecting Against Bad USB Attacks](#protecting-against-bad-usb-attacks)  
 7. [📜 Step-by-Step Guide: Converting Raspberry Pi Pico into a Bad USB](#step-by-step-guide-converting-raspberry-pi-pico-into-a-bad-usb)  
+   - [Quick Setup](#quick-setup)  
+   - [Detailed Setup](#detailed-setup)  
 8. [⚙️ Exploring Additional Functionalities with GPIO Pins](#exploring-additional-functionalities-with-gpio-pins)  
 9. [📚 Conclusion](#conclusion)  
 10. [🔗 References](#references)  
 
----
 
 ## 🔍 Introduction  
 
@@ -26,7 +27,6 @@ This tutorial will explain:
 - Step-by-step instructions to convert a Raspberry Pi Pico into a Bad USB device 🛠️.  
 - Bonus: Advanced uses with GPIO pins! ⚙️  
 
----
 
 ## 🛠️ What is a Bad USB?  
 
@@ -37,7 +37,6 @@ A **Bad USB** device is a USB peripheral that emulates trusted devices, such as 
 - **Acts maliciously**: Executes unauthorized commands ⚠️.  
 - **Hard to detect**: Recognized as a "trusted" device by the operating system 🖥️.  
 
----
 
 ## 🖱️ Understanding Rubber Ducky and Ducky Script  
 
@@ -58,7 +57,6 @@ ENTER
 ```
 This script opens Notepad on a Windows machine and is executed in seconds ⏱️.  
 
----
 
 ## ⚠️ Risks and Dangers of Bad USB Devices  
 
@@ -67,9 +65,8 @@ Bad USB devices pose significant risks:
 - **Malware installation**: They can install backdoors or viruses 🐛.  
 - **System compromise**: Execute commands to disrupt operations 🛑.  
 
-⚠️ **Note**: These devices are difficult to detect and mitigate without proper security measures.  
+> ⚠️ **Note**: These devices are difficult to detect and mitigate without proper security measures.  
 
----
 
 ## ⚖️ Legal Considerations  
 
@@ -77,9 +74,8 @@ Bad USB devices pose significant risks:
 - Legal consequences ⚖️.  
 - Reputation damage 🚫.  
 
-✅ **Always ensure you have explicit permission before conducting security tests!**  
+> ✅ **Always ensure you have explicit permission before conducting security tests!**  
 
----
 
 ## 🛡️ Protecting Against Bad USB Attacks  
 
@@ -89,35 +85,32 @@ Bad USB devices pose significant risks:
 3. 🔒 **Educate users** about the dangers of Bad USB devices.  
 4. 📜 **Implement device whitelisting** to limit USB device connections.  
 
----
 
-## 📜 Step-by-Step Guide: Converting Raspberry Pi Pico into a Bad USB  
-
-### 🔧 What You'll Need:  
+## 🔧 What You'll Need:  
 - Raspberry Pi Pico board 🔌.  
 - Micro USB cable 📎.  
 - Computer with internet access 🌐.  
 
-### 🛠️ Steps:  
+## 🔧 Quick Setup: 
 
-1. **Download CircuitPython**  
+### 1. **Download CircuitPython**  
    - Go to the [CircuitPython download page](https://circuitpython.org/board/raspberry_pi_pico/) 🌐.  
    - Download the latest `.UF2` file for the Pico 💾.  
 
-2. **Install CircuitPython**  
+### 2. **Install CircuitPython**  
    - Hold the **BOOTSEL** button while connecting the Pico to your computer ⚙️.  
    - Drag and drop the `.UF2` file onto the **RPI-RP2** drive 🖥️.  
    - The Pico will reboot and appear as `CIRCUITPY` 💡.  
 
-3. **Set Up HID Functionality**  
+### 3. **Set Up HID Functionality**  
    - Download the [Adafruit HID library](https://github.com/adafruit/Adafruit_CircuitPython_HID) 📦.  
    - Copy the `adafruit_hid` folder to the `lib` directory on the `CIRCUITPY` drive 📂.  
 
-4. **Write Your Payload**  
-   - Create a Python script using the Adafruit HID library to simulate keystrokes 🎯.  
+### 4. **Write Your Payload**  
+   - Create a Python script using the Adafruit HID library to execute a Ducky Script payload, or download the preconfigured script from [here](https://github.com/dbisu/pico-ducky/blob/main/code.py) 🎯.  
    - Save the script as `code.py` on the `CIRCUITPY` drive 🖋️.  
 
-   **Example Payload**:  
+   **Example**:  
    ```python  
    import time  
    import board  
@@ -131,10 +124,89 @@ Bad USB devices pose significant risks:
    keyboard.press(Keycode.GUI, Keycode.R)  # Open Run  
    keyboard.release_all()  
    time.sleep(0.5)  
-   keyboard.write("notepad\n")  
-    ```
-5. Test the Device
-  - Reconnect the Pico to the computer. It will automatically execute the payload! 🎉
+   keyboard.write("notepad\n")
+   ```
+   > Note: This script simulates the execution of a Ducky Script payload. Make sure to replace this with the payload you want to run.
+
+### 5. **Find or Create a Ducky Script**  
+   - You can find an existing Ducky Script payload [here](https://github.com/dbisu/pico-ducky/blob/main/payload.dd) 🌐, or create your own using Ducky Script.  
+   - Save the Ducky Script as `payload.dd` in the root folder of your Pico 💾.
+     
+   > **Note**: Currently, the pico-ducky only supports DuckyScript 1.0, and some features of 3.0 ⚠️.
+
+### 6. **Be Careful with Setup Mode**  
+   - Ensure the device is in setup mode before you disconnect it from your computer ⚙️.  
+   - If the device isn't in setup mode, it will reboot automatically 🔄 and execute the script within half a second 💨.  
+   - Make sure to double-check before disconnecting the device to prevent unwanted execution of the payload 🚨.
+.
+### 7. **Test the Device Safely**  
+   - After setting up the payload, safely test the device in an isolated environment 🛡️ (e.g., using a virtual machine or a non-essential system) to avoid potential harm to your computer 💻.  
+   - Reconnect the Pico to the computer ⚡. The device will automatically execute the payload, so ensure you're in a safe environment before proceeding 🔐.
+
+
+
+## 🔍 Detailed Setup
+
+### 1. **Clone the Repository**  
+   - Clone the repository to get preconfigured files:
+     ```bash
+     git clone https://github.com/dbisu/pico-ducky.git
+     ```
+   - This will provide you with the necessary scripts and files to get started.
+
+
+### 2. **Download CircuitPython**  
+   - Get the appropriate `.UF2` file for your Raspberry Pi Pico model:
+     - [Raspberry Pi Pico](https://circuitpython.org/board/raspberry_pi_pico/) 🌐
+     - [Raspberry Pi Pico W](https://circuitpython.org/board/raspberry_pi_pico_w/) 🌐
+     - [Raspberry Pi Pico 2](https://circuitpython.org/board/raspberry_pi_pico_2/) 🌐
+     - [Raspberry Pi Pico 2W](https://circuitpython.org/board/raspberry_pi_pico_2w/) 🌐
+   - Make sure to download the latest version to ensure compatibility.
+
+
+### 3. **Install CircuitPython**  
+   - To install CircuitPython on your Pico, follow these steps:
+     1. Hold down the **BOOTSEL** button on the Pico while connecting it to your computer ⚙️.
+     2. After the Pico is connected, it will appear as a storage device called `RPI-RP2` 🖥️.
+     3. Copy the downloaded `.UF2` file to the `RPI-RP2` drive.
+     4. Once the file is copied, the device will reboot and will appear as `CIRCUITPY` 💡.
+
+### 4. **Download Libraries**  
+   - Download the [Adafruit CircuitPython Bundle](https://github.com/adafruit/Adafruit_CircuitPython_Bundle/releases) and extract the files.
+   - From the extracted folder, copy the following libraries to the `lib` folder on your Pico:
+     - `adafruit_hid`  
+     - `adafruit_debouncer.mpy`  
+     - `adafruit_ticks.mpy`  
+     - `asyncio`  
+     - `adafruit_wsgi`
+
+### 5. **Add Required Files**  
+   - After cloning the repo, copy the following files from the cloned repository to the root folder of your Pico:
+     - `boot.py`
+     - `duckyinput.py`
+     - `code.py`
+     - `webapp.py`
+     - `wsgiserver.py`
+   - These scripts are essential for making the Pico work as a Bad USB device.
+
+### 6. **Configure Wi-Fi (Pico W Only)**  
+   - If you're using a **Pico W** model and want to configure Wi-Fi, create a file named `secrets.py` in the root of your Pico and add the following content:
+     ```python
+     secrets = {
+         'ssid': "YourAPName",
+         'password': "YourAPPassword"
+     }
+     ```
+   - Replace `"YourAPName"` and `"YourAPPassword"` with the actual credentials of your Wi-Fi network.
+
+### 7. **Add Payload Script**  
+   - Save your **Ducky Script** payload as `payload.dd` on the Pico.  
+   - **Note**: Currently, the setup supports **DuckyScript 1.0** and partial **DuckyScript 3.0**.
+
+### 8. **Run and Test**  
+   - After everything is set up, disconnect and reconnect the Pico to execute the payload automatically.
+   - The device will run the payload script when reconnected, simulating the keystrokes or actions defined in the DuckyScript.
+
 
 ## ⚙️ Exploring Additional Functionalities with GPIO Pins
 The GPIO pins on the Raspberry Pi Pico offer flexibility for advanced features:
@@ -150,4 +222,10 @@ Connect a button to a GPIO pin and modify the script to wait for a button press 
 Converting a Raspberry Pi Pico into a Bad USB demonstrates the importance of cybersecurity awareness 🛡️. While these devices have legitimate uses, they must be handled responsibly and ethically ⚖️. Stay informed, stay safe!
 
 ## 🔗 References
+
+- [CircuitPython Download Page for Raspberry Pi Pico](https://circuitpython.org/board/raspberry_pi_pico/) 🌐  
+- [Adafruit HID Library](https://github.com/adafruit/Adafruit_CircuitPython_HID) 📦  
+- [Pico-Ducky Repository](https://github.com/dbisu/pico-ducky) 🔗  
+- [DuckyScript 1.0 and 3.0 Documentation](https://github.com/hak5darren/USB-Rubber-Ducky/blob/master/docs/DuckyScript_Reference.md) 📝
+
 
