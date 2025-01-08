@@ -240,7 +240,7 @@ Check out their repository for more details and additional resources! 🚀
 
 ## ⚠️ Important Notice
 
-> ⚠️ **Warning**: This repository and the instructions provided are for educational purposes only.  
+⚠️ **Warning**: This repository and the instructions provided are for educational purposes only.  
 Using a Raspberry Pi Pico as a Bad USB device can cause serious security risks if misused.  
 Always be cautious and respect legal boundaries when working with these tools.  
 The creator of this repository is not responsible for any misuse of the information shared.  
