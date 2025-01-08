@@ -228,4 +228,28 @@ Converting a Raspberry Pi Pico into a Bad USB demonstrates the importance of cyb
 - [Pico-Ducky Repository](https://github.com/dbisu/pico-ducky) 🔗  
 - [DuckyScript 1.0 and 3.0 Documentation](https://github.com/hak5darren/USB-Rubber-Ducky/blob/master/docs/DuckyScript_Reference.md) 📝
 
+## 📝 Credits
+
+A large part of the information and setup process in this guide was sourced from the [pico-ducky repository](https://github.com/dbisu/pico-ducky/tree/main). Many thanks to the contributors for their excellent work in creating and documenting the project. Here's a breakdown of what was sourced:
+
+- **Code for transforming Raspberry Pi Pico into a Bad USB device** 💻
+- **Detailed setup instructions** 📖
+- **DuckyScript implementation and examples** 🖥️
+
+Check out their repository for more details and additional resources! 🚀
+
+---
+
+> ⚠️ **Warning**: This repository and the instructions provided are for educational purposes only.  
+Using a Raspberry Pi Pico as a Bad USB device can cause serious security risks if misused.  
+Always be cautious and respect legal boundaries when working with these tools.  
+The creator of this repository is not responsible for any misuse of the information shared.  
+Use at your own risk!
+
+---
+
+Thank you for exploring this project! Always prioritize security and ethical practices when learning about hacking and cybersecurity.  
+Stay safe, stay informed, and keep learning! 🚀
+
+
 
