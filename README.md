@@ -201,7 +201,7 @@ Bad USB devices pose significant risks:
 
 ### 7. **Add Payload Script**  
    - Save your **Ducky Script** payload as `payload.dd` on the Pico.  
-   - **Note**: Currently, the setup supports **DuckyScript 1.0** and partial **DuckyScript 3.0**.
+   > **Note**: Currently, the setup supports **DuckyScript 1.0** and partial **DuckyScript 3.0**.
 
 ### 8. **Run and Test**  
    - After everything is set up, disconnect and reconnect the Pico to execute the payload automatically.
@@ -238,7 +238,7 @@ A large part of the information and setup process in this guide was sourced from
 
 Check out their repository for more details and additional resources! 🚀
 
----
+## ⚠️ Important Notice
 
 > ⚠️ **Warning**: This repository and the instructions provided are for educational purposes only.  
 Using a Raspberry Pi Pico as a Bad USB device can cause serious security risks if misused.  
@@ -250,6 +250,4 @@ Use at your own risk!
 
 Thank you for exploring this project! Always prioritize security and ethical practices when learning about hacking and cybersecurity.  
 Stay safe, stay informed, and keep learning! 🚀
-
-
 
