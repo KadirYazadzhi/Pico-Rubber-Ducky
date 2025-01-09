@@ -218,7 +218,7 @@ The GPIO pins on the Raspberry Pi Pico offer flexibility for advanced features:
 - **Status LEDs**: Indicate device state (e.g., ready, running, or error) 💡.  
 - **Multi-Payload Support**: Implement multiple payloads based on GPIO pin states 🔀.  
 
-#### 🛠️ Setup Mode  
+### 🛠️ Setup Mode  
 
 To edit the payload, enter setup mode by connecting **pin 1 (GP0)** to **pin 3 (GND)**. This will stop the Pico-Ducky from injecting the payload on your own machine.  
 
@@ -228,7 +228,7 @@ To edit the payload, enter setup mode by connecting **pin 1 (GP0)** to **pin 3 (
 
 <img src="https://github.com/dbisu/pico-ducky/blob/main/images/setup-mode.png?raw=true">
 
-#### 🔒 USB Enable/Disable Mode  
+### 🔒 USB Enable/Disable Mode  
 
 If you want the Pico-Ducky to operate stealthily without appearing as a USB mass storage device, follow these instructions:  
 
@@ -250,7 +250,7 @@ If you want the Pico-Ducky to operate stealthily without appearing as a USB mass
 
 <img src="https://github.com/dbisu/pico-ducky/blob/main/images/usb-boot-mode.png?raw=true">
 
-#### ⚙️ Default Modes  
+### ⚙️ Default Modes  
 
 - **Pico**: USB mass storage is enabled by default.  
 - **Pico W**: USB mass storage is disabled by default.  
