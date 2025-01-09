@@ -1,18 +1,20 @@
 # 🚀 Transforming Raspberry Pi Pico into a Bad USB Device
 
 ## 📋 Table of Contents
-1. [🔍 Introduction](#-introduction)  
-2. [🛠️ What is a Bad USB?](#️-what-is-a-bad-usb)  
-3. [🖱️ Understanding Rubber Ducky and Ducky Script](#understanding-rubber-ducky-and-ducky-script)  
-4. [⚠️ Risks and Dangers of Bad USB Devices](#risks-and-dangers-of-bad-usb-devices)  
-5. [⚖️ Legal Considerations](#legal-considerations)  
-6. [🛡️ Protecting Against Bad USB Attacks](#protecting-against-bad-usb-attacks)  
-7. [📜 Step-by-Step Guide: Converting Raspberry Pi Pico into a Bad USB](#step-by-step-guide-converting-raspberry-pi-pico-into-a-bad-usb)  
-   - [Quick Setup](#quick-setup)  
-   - [Detailed Setup](#detailed-setup)  
-8. [⚙️ Exploring Additional Functionalities with GPIO Pins](#exploring-additional-functionalities-with-gpio-pins)  
-9. [📚 Conclusion](#conclusion)  
-10. [🔗 References](#references)  
+1. 🔍 Introduction
+2. 🛠️ What is a Bad USB?  
+3. 🖱️ Understanding Rubber Ducky and Ducky Script  
+4. ⚠️ Risks and Dangers of Bad USB Devices  
+5. ⚖️ Legal Considerations  
+6. 🛡️ Protecting Against Bad USB Attacks  
+7. 📜 Step-by-Step Guide: Converting Raspberry Pi Pico into a Bad USB  
+   - Quick Setup  
+   - Detailed Setup  
+8. ⚙️ Exploring Additional Functionalities with GPIO Pins
+   - Setup Mode
+   - USB Enable/Disable Mode
+10. 📚 Conclusion
+11. 🔗 References  
 
 
 ## 🔍 Introduction  
@@ -208,15 +210,53 @@ Bad USB devices pose significant risks:
    - The device will run the payload script when reconnected, simulating the keystrokes or actions defined in the DuckyScript.
 
 
-## ⚙️ Exploring Additional Functionalities with GPIO Pins
-The GPIO pins on the Raspberry Pi Pico offer flexibility for advanced features:
+## ⚙️ Exploring Additional Functionalities with GPIO Pins  
 
-- **Custom Triggers**: Use buttons or switches to control payload execution 🔘.
-- **Status LEDs**: Indicate device state (e.g., ready, running, or error) 💡.
-- **Multi-Payload Support**: Implement multiple payloads based on GPIO pin states 🔀.
+The GPIO pins on the Raspberry Pi Pico offer flexibility for advanced features:  
 
-**Example: GPIO-Based Trigger**
-Connect a button to a GPIO pin and modify the script to wait for a button press before executing the payload.
+- **Custom Triggers**: Use buttons or switches to control payload execution 🔘.  
+- **Status LEDs**: Indicate device state (e.g., ready, running, or error) 💡.  
+- **Multi-Payload Support**: Implement multiple payloads based on GPIO pin states 🔀.  
+
+#### 🛠️ Setup Mode  
+
+To edit the payload, enter setup mode by connecting **pin 1 (GP0)** to **pin 3 (GND)**. This will stop the Pico-Ducky from injecting the payload on your own machine.  
+
+**Steps**:  
+1. Use a jumper wire to connect **GP0** and **GND**.  
+2. This will enable setup mode and prevent unintended payload execution.  
+
+<img src="https://github.com/dbisu/pico-ducky/blob/main/images/setup-mode.png?raw=true">
+
+#### 🔒 USB Enable/Disable Mode  
+
+If you want the Pico-Ducky to operate stealthily without appearing as a USB mass storage device, follow these instructions:  
+
+1. **Enter Setup Mode**:  
+   - Connect **GP0** to **GND** using a jumper wire.  
+
+2. **Upload Payload**:  
+   - Copy your payload script to the Pico-Ducky.  
+
+3. **Disconnect**:  
+   - Safely disconnect the Pico from your host PC.  
+
+4. **Stealth Mode**:  
+   - Connect a jumper wire between **pin 18 (GND)** and **pin 20 (GPIO15)**.  
+   - This prevents the Pico-Ducky from showing up as a USB drive when plugged into the target computer.  
+
+5. **Reprogram Mode**:  
+   - Remove the jumper wire and reconnect the Pico to your PC to reprogram.  
+
+<img src="https://github.com/dbisu/pico-ducky/blob/main/images/usb-boot-mode.png?raw=true">
+
+#### ⚙️ Default Modes  
+
+- **Pico**: USB mass storage is enabled by default.  
+- **Pico W**: USB mass storage is disabled by default.  
+
+These configurations enhance security and flexibility for advanced use cases. 🔒
+
 
 ## 📚 Conclusion
 Converting a Raspberry Pi Pico into a Bad USB demonstrates the importance of cybersecurity awareness 🛡️. While these devices have legitimate uses, they must be handled responsibly and ethically ⚖️. Stay informed, stay safe!
